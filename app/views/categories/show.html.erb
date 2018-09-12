@@ -20,14 +20,4 @@
 <% end %>
 
 <h1>Productos</h1>
-
-<table>
-  <% @products.each do |p| %>
-    <tr>
-      <td><%= p.name %></td>
-      <td><%= p.price %></td>
-      <% @id = p.id %>
-      <td><%= link_to "borrar", category_product_path(@category, @id), method: :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<%= render 'products/table', products: @products %>
