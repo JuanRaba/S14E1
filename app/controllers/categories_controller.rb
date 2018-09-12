@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @product = @category.products.build
+    @product = Product.new
     @products = @category.products
   end
 
