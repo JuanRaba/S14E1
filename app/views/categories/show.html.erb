@@ -1,28 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<h1>
+  Categoria: <%= @category.name %>
+</h1>
 
-<%= form_with(model: [ @category, @product ]) do |form| %>
-  
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+
+<%= form_with model: [@category, @product] do |form| %>
+  <%= form.hidden_field :category_id, value: @category.id %>
+
   <%= form.label :name %>
   <%= form.text_area :name %>
 
   <%= form.label :price %>
   <%= form.number_field :price %>
+
+  <%= form.submit "crear"%>
 <% end %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<h1>Productos</h1>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-      </tr>
-    <% end %>
-  </tbody>
-<% end %>
+<table>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+    </tr>
+  <% end %>
+</table>
